@@ -1,16 +1,21 @@
-import java.io.IOException;
+import java.util.ArrayList;
 
-import gpstl.exception.InvalidManifestException;
+import gpstl.exception.NotADirectoryException;
 import gpstl.utils.LectureManifest;
 
 
 public class Main {
 
 	public static void main(String[] args) {
+		ArrayList<String> listeId = new ArrayList<String>();
+		
 		try {
-			System.out.println(LectureManifest.getIdManifest("MANIFEST.MF"));
-		} catch (IOException | InvalidManifestException e) {
-			System.out.println(e.getMessage());
+			listeId = LectureManifest.getListeId("../../plugins/");
+			for(int i = 0; i < listeId.size(); i++){
+				System.out.println(listeId.get(i));
+			}
+		} catch (NotADirectoryException e) {
+			//System.out.println(e.getMessage());
 		}
 	}
 
